@@ -539,16 +539,23 @@
     document.querySelector('.show-login').style.display = 'none';
   });
 
-  // Show register modal
+  // Show register
   document.getElementById('create_account').addEventListener('click', function() {
-    document.querySelector('.show-login').style.display = 'none'; // Hide login modal
-    document.querySelector('.show-reg').style.display = 'grid'; // Show register modal
+    document.querySelector('.show-login').style.display = 'none'; 
+    document.querySelector('.show-reg').style.display = 'grid';
   });
 
   // Close register
   document.querySelector('.close-reg').addEventListener('click', function() {
     document.querySelector('.show-reg').style.display = 'none';
   });
+
+  // Show login again
+  document.getElementById('login-show').addEventListener('click', function() {
+    document.querySelector('.show-reg').style.display = 'none';
+    document.querySelector('.show-login').style.display = 'grid';
+  });
+
 </script>
 
 </body>
