@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Store-admin</title>
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+
+    <!-- Css link -->
+     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wrapper{
+            background-color: #343A40;
+            height: 100vh;
+            width: auto;
+            display: grid;
+            grid-template-rows: calc(100vh - 90vh) calc(100vh - 20vh) calc(100vh - 90vh);
+            grid-template-columns: 250px calc(100% - 250px);
+
+        }
+        .main-header{
+            padding: 10px;
+            border-bottom: 1px solid #ffffffcf;
+
+            ul{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                li{
+                    list-style-type: none;
+                }
+                a{
+                    text-decoration: none;
+                    color: #CED4DA;
+                    font-size: 24px;
+                }
+
+                .btn-group{
+                    button{
+                        width:auto;
+                        padding: 12px;
+                        border-radius: 10px;
+                        font-size: 18px;
+                        display: flex;
+                        gap: 10px;
+                        font-weight: 700;
+                    }
+                    .dropdown-menu{
+                        display: none;
+                        flex-direction: column;
+                        padding: 10px;
+
+                        .dropdown-item{
+                            color: #fff;
+                            padding: 8px;
+                            border-bottom: 1px solid #fff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .main-sidebar{
+            grid-area: 1/1/4/-3;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+            .active{
+                background-color: rgb(0, 200, 255);
+            }
+
+            .brand-link{
+                padding: 10px  30px 10px 30px;
+                text-decoration: none;
+
+                .brand-image{
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                }
+
+                .brand-text{
+                    font-size: 30px;
+                    color: #f8fbff;
+                }
+            }
+
+            ul{
+                list-style-type: none;
+
+                li{
+                    padding: 10px  30px 10px 30px;
+                    font-size: 18px;
+                    color: #CED4DA;
+                    
+                    a{
+                        text-decoration: none;
+                        font-size: 20px;
+                        color: #CED4DA;
+                    }
+                }
+            }
+        }
+        .main-footer{
+            display: grid;
+            place-items: center;
+            border-top: 1px solid #ffffff4f;
+        }
+
+     </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="#" class="nav-link">Hello - Admin</a>
+            </li>
+        
+            <li class="nav-item">
+                <div class="btn-group">
+                    <button type="button" class="btn">
+                        <span><i class="fa-regular fa-user"></i></span>
+                        <span class="ml-3">admin</span>
+                        <span"><i class="fa-solid fa-caret-down"></i></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> My Account</a>
+                        <a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </div>
+                </div>
+            </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link active">
+                <img src="../uploads/logo (2).jpg" alt="Store Logo" class="brand-image">
+                <span class="brand-text">Pet Store</span>
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-4">
+                    <ul class="nav-sidebar">
+                        <li class="nav-item">
+                            <a href="./" class="nav-link">
+                                <i class="fa-solid fa-gauge-high"></i>
+                                    Dashboard
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-users"></i>
+                                    User List
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-box"></i>
+                                    Product List
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                    Inventory List
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-list"></i>
+                                    Order List
+                            </a>
+                        </li>
+                        <li class="nav-item">Maintenance</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-table-list"></i>
+                                    Category List
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-table-list"></i>
+                                    Sub Category List
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="localhost/pet_store/admin/?page=system_info" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                    Settings
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <main>
+            <div class="main-div">
+
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <strong>
+                Copyright ©. 
+            </strong>
+            All rights reserved.
+        </footer>
+    </div>
+   
+
+    <script>
+    </script>
+</body>
+</html>
