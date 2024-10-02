@@ -43,17 +43,17 @@
                                 
                                 </td>
                                 <td class="text-center">
-                                    <!-- <?php if($row['status'] == 0): ?> -->
+                                    <!-- <?php //if($row['status'] == 0): ?> -->
                                         <!-- <span class="badge badge-light">Pending</span> -->
-                                    <!-- <?php elseif($row['status'] == 1): ?> -->
+                                    <!-- <?php // elseif($row['status'] == 1): ?> -->
                                         <!-- <span class="badge badge-primary">Packed</span> -->
-                                    <!-- <?php elseif($row['status'] == 2): ?> -->
+                                    <!-- <?php //elseif($row['status'] == 2): ?> -->
                                         <span class="badge badge-warning">Out for Delivery</span>
-                                    <!-- <?php elseif($row['status'] == 3): ?> -->
+                                    <!-- <?php //elseif($row['status'] == 3): ?> -->
                                         <!-- <span class="badge badge-success">Delivered</span> -->
-                                    <!-- <?php else: ?> -->
+                                    <!-- <?php// else: ?> -->
                                         <!-- <span class="badge badge-danger">Cancelled</span> -->
-                                    <!-- <?php endif; ?> -->
+                                    <!-- <?php// endif; ?> -->
                                 </td>
                                 <td>
                                     <button type="button" class="btn  dropdown-icon" id="dropdownButton" data-toggle="dropdown">
@@ -61,7 +61,7 @@
                                             <i class="fa-solid fa-caret-down"></i>
                                     </button>
                                     <div class="dropdown-menu" id="dropdownMenu" role="menu">
-                                        <a class="dropdown-item" href="?#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        <a class="dropdown-item" href="index.php?page=view_order_list">View Order</a>
                                         <hr>
                                         <a class="dropdown-item delete_data" href="#" data-id=""><i class="fa-solid fa-trash"></i> Delete</a>
                                     </div>

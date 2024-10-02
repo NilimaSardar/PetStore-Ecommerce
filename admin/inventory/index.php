@@ -1,9 +1,10 @@
+
 <div class="card">
     <div class="inner-card">
         <div class="card-header">
-            <h3 class="card-title">List of Products</h3>
+            <h3 class="card-title">List of Inventory</h3>
             <div class="card-tools">
-                <a href="#" class="btn"><i class="fa-solid fa-plus"></i>  Create New</a>
+                <a href="index.php?page=manage_inventory_list" class="btn"><i class="fa-solid fa-plus"></i>  Create New</a>
             </div>
         </div>
         <div class="searching">
@@ -15,42 +16,39 @@
                 <table class="table">
                     <colgroup>
                         <col width="5%">
-                        <col width="15%">
-                        <col width="20%">
-                        <col width="35%">
+                        <col width="25%">
                         <col width="10%">
-                        <col width="15%">
+                        <col width="10%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="10%">
                     </colgroup>
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Date Created</th>
                             <th>Product</th>
-                            <th>Description</th>
-                            <th>Status</th>
+                            <th>Unit</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Stock</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr>
                                 <td class="text-center">1</td>
-                                <td>2024:05:12 12:09</td>
-                                <td>Dog Food</td>
-                                <td ><p class="truncate-1 m-0">healthy food</p></td>
-                                <td class="text-center">
-                                
-                                        <!-- <span class="badge badge-success">Active</span> -->
-                                
-                                        <span class="badge badge-danger">Inactive</span>
-                                
-                                </td>
+                                <td>parrot</td>
+                                <td>pcs</td>
+                                <td>NONE</td>
+                                <td class="text-right">300,000</td>
+                                <td class="text-right">15</td>
                                 <td>
                                     <button type="button" class="btn  dropdown-icon" id="dropdownButton" data-toggle="dropdown">
                                             Action
                                             <i class="fa-solid fa-caret-down"></i>
                                     </button>
                                     <div class="dropdown-menu" id="dropdownMenu" role="menu">
-                                        <a class="dropdown-item" href="?#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        <a class="dropdown-item" href="index.php?page=manage_inventory_list"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                         <hr>
                                         <a class="dropdown-item delete_data" href="#" data-id=""><i class="fa-solid fa-trash"></i> Delete</a>
                                     </div>

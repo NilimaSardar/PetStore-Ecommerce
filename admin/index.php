@@ -781,38 +781,38 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="index.php?page=product_list" class="nav-link">
                                 <i class="fa-solid fa-box"></i>
                                     Product List
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="#" class="nav-link">
+                            <a href="index.php?page=inventory_list" class="nav-link">
                                 <i class="fa-solid fa-clipboard-list"></i>
                                     Inventory List
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="index.php?page=order_list" class="nav-link">
                                 <i class="fa-solid fa-list"></i>
                                     Order List
                             </a>
                         </li>
                         <li class="nav-item">Maintenance</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="index.php?page=category" class="nav-link">
                                 <i class="fa-solid fa-table-list"></i>
                                     Category List
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="index.php?page=sub_category" class="nav-link">
                                 <i class="fa-solid fa-table-list"></i>
                                     Sub Category List
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="localhost/pet_store/admin/?page=system_info" class="nav-link">
+                            <a href="index.php?page=settings" class="nav-link">
                                 <i class="fa-solid fa-gear"></i>
                                     Settings
                             </a>
@@ -825,44 +825,49 @@
         </aside>
 
         <main> 
-            <div class="card-info">
-                <div class="card-header">
-                    <h3 class="card-title">Update Sub Catgory</h3>
-                </div>
-                <div class="card-body">
-                    <form action="" id="category-form">
-                        <input type="hidden" name ="id" value="<?php echo isset($id) ? $id : '' ?>">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="parent_id" class="control-label">Parent Category</label>
-                                <select name="parent_id" id="parent_id" class="custom-select select2">
-                                <option value=""></option>
-                                <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="sub_category" class="control-label">Sub Category Name</label>
-                                <textarea name="sub_category" id="" cols="30" rows="2" class="form-control form no-resize"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="description" class="control-label">Description</label>
-                                <textarea name="description" id="" cols="30" rows="2" class="form-control form no-resize"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="status" class="control-label">Status</label>
-                                <select name="status" id="status" class="custom-select selevt">
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                                </select>
-                            </div>
-                            <div class="card-footer">
-                                <button class="btn" form="category-form">Save</button>
-                                <a class="btn" href="?page=maintenance/sub_category">Cancel</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>   
+        <?php
+            // Mapping pages to their respective folders
+            $pages = [
+                'inventory_list' => 'inventory/index.php',
+                'manage_inventory_list' => 'inventory/manage_inventory.php',
+                'category' => 'maintenance/category.php',
+                'sub_category' => 'maintenance/sub_category.php',
+                'manage_category' => 'maintenance/manage_category.php',
+                'manage_sub_category' => 'maintenance/manage_sub_category.php',
+                'order_list' => 'orders/index.php',
+                'view_order_list' => 'orders/view_order.php',
+                'update_status' => 'orders/index.php',
+                'product_list' => 'product/index.php',
+                'manage_product_list' => 'product/manage_product.php',
+                'settings' => 'system_info/index.php'
+            ];
+
+            // Check if the 'page' parameter is set and exists in the $pages array
+            if (isset($_GET['page']) && array_key_exists($_GET['page'], $pages)) {
+                include($pages[$_GET['page']]);
+            } else {
+                // Default page if no 'page' parameter or invalid 'page'
+                include('dashboard.php');
+            }
+         
+                // // Load content dynamically based on the 'page' URL parameter
+                // if (isset($_GET['page'])) {
+                //     $page = $_GET['page'];
+
+                //     // Define valid pages to avoid any security issues
+                //     $valid_pages = ['dashboard', 'user_list', 'product_list', 'inventory_list', 'order_list', 'category_list', 'sub_category_list', 'settings'];
+
+                //     // Check if the requested page is valid and include the respective file
+                //     if (in_array($page, $valid_pages)) {
+                //         include($page . '.php');
+                //     } else {
+                //         echo "<p>Page not found!</p>";
+                //     }
+                // } else {
+                //     // Default page content (e.g., Dashboard)
+                //     include('dashboard.php');
+                // }
+            ?>
         </main>
 
         <footer class="main-footer">
