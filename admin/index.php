@@ -51,7 +51,17 @@
                         display: flex;
                         gap: 10px;
                         font-weight: 700;
+                        border: none;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease, box-shadow 0.3s ease;
                     }
+
+                    button:hover {
+                        color: #FFFFFF;
+                        background-color: rgb(170, 0, 0);
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                    }
+
 
                      /* Hide the dropdown by default */
                      .dropdown-menu {
@@ -130,6 +140,13 @@
                         font-size: 20px;
                         color: #CED4DA;
                     }
+                }
+
+                li.nav-item:hover{
+                    background-color: #878e95c1;
+                }
+                li:active{
+                    background-color: rgb(0, 200, 255);
                 }
             }
         }
@@ -712,13 +729,25 @@
                                 background-color: rgb(0, 200, 255);
                                 border: 1px solid #ccc;
                                 color: #FFFFFF;
+                                border-radius: 3px;
                                 font-size: 18px;
                                 padding: 10px 12px;
                                 margin: 5px;
+                                transition: all 0.1s linear;
                             }
                             a.btn{
                                 text-decoration: none;
                                 background-color: transparent;
+                                transition: all 0.1s linear;
+                            }
+                            .btn:hover{
+                                background-color: rgb(0, 150, 200);
+                                border-color: rgb(0, 180, 230); 
+                            }
+                            a.btn:hover{
+                                background-color: #ccc;
+                                color: #343A40;
+                                border: none;
                             }
 
                         }
@@ -741,14 +770,14 @@
             <li class="nav-item">
                 <div class="btn-group">
                     <button type="button" class="btn dropdown-icon" id="dropdownButton-admin">
-                        <span><i class="fa-regular fa-user"></i></span>
-                        <span>admin</span>
-                        <span><i class="fa-solid fa-caret-down"></i></span>
+                        <span><i class="fa-solid fa-right-from-bracket"></i> </span>
+                        <span>Logout</span>
+                        <!-- <span><i class="fa-solid fa-caret-down"></i></span> -->
                     </button>
-                    <div class="dropdown-menu" id="dropdownMenu-admin">
+                    <!-- <div class="dropdown-menu" id="dropdownMenu-admin">
                         <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> My Account</a><hr>
                         <a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-                    </div>
+                    </div> -->
                 </div>
             </li>
             </ul>
@@ -775,9 +804,9 @@
                             </a>
                         </li> 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa-solid fa-users"></i>
-                                    User List
+                            <a href="index.php?page=user_list" class="nav-link">
+                            <i class="fa-solid fa-user"></i>
+                                   My Account
                             </a>
                         </li>
                         <li class="nav-item">
@@ -798,7 +827,7 @@
                                     Order List
                             </a>
                         </li>
-                        <li class="nav-item">Maintenance</li>
+                        <li>Maintenance</li>
                         <li class="nav-item">
                             <a href="index.php?page=category" class="nav-link">
                                 <i class="fa-solid fa-table-list"></i>
@@ -828,6 +857,7 @@
         <?php
             // Mapping pages to their respective folders
             $pages = [
+                'user_list' => 'user/index.php',
                 'inventory_list' => 'inventory/index.php',
                 'manage_inventory_list' => 'inventory/manage_inventory.php',
                 'category' => 'maintenance/category.php',
@@ -849,24 +879,6 @@
                 // Default page if no 'page' parameter or invalid 'page'
                 include('dashboard.php');
             }
-         
-                // // Load content dynamically based on the 'page' URL parameter
-                // if (isset($_GET['page'])) {
-                //     $page = $_GET['page'];
-
-                //     // Define valid pages to avoid any security issues
-                //     $valid_pages = ['dashboard', 'user_list', 'product_list', 'inventory_list', 'order_list', 'category_list', 'sub_category_list', 'settings'];
-
-                //     // Check if the requested page is valid and include the respective file
-                //     if (in_array($page, $valid_pages)) {
-                //         include($page . '.php');
-                //     } else {
-                //         echo "<p>Page not found!</p>";
-                //     }
-                // } else {
-                //     // Default page content (e.g., Dashboard)
-                //     include('dashboard.php');
-                // }
             ?>
         </main>
 
