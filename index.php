@@ -84,6 +84,7 @@
               display: block;
               padding: 20px 25px;
               text-decoration: none;
+              color: #0000008C;
               text-align: center;
               font-size: 20px;
             }
@@ -100,10 +101,55 @@
           }
         }
         ul li a:hover{
-          background-color: aquamarine;
+          color: #000000E6;
+          font-weight: 400;
         }
-        ul li:hover ul.dropdown-menu{
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 85%;
+            left: 0;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            padding:0px;
+            min-width: 125px;
+        }
+
+        .dropdown-menu li {
+            list-style-type: none;
+        }
+
+        .dropdown-item {
+            padding: 8px 5px;
+            text-decoration: none;
             display: block;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #0000008C;
+            color: white;
+        }
+
+        /* Animation for dropdown */
+        .dropdown-menu.show {
+            display: block;
+            animation: slideDown 0.3s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .user-cart{
@@ -446,9 +492,9 @@
             <div class="menu">
               <ul class="nav-menu">
                 <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
-                <li class="nav-item item"><a class="nav-link" href="#">Pets <i class="fa-solid fa-caret-down"></i></a>
+                <li class="nav-item item dropdown-icon" id="dropdownButton"><a class="nav-link" href="#">Pets <i class="fa-solid fa-caret-down"></i></a>
                         
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu" id="dropdownMenu">
                     <li><a class="dropdown-item" href="#">Cat</a></li>
                     <li><a class="dropdown-item" href="#">Dog</a></li>
                   </ul>
@@ -529,6 +575,30 @@
 
   </div>
   <script>
+
+        // Handle the dropdown toggle when clicking the "Pets" link
+        document.getElementById('dropdownButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            
+            // Toggle the visibility of the dropdown
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+            } else {
+                dropdownMenu.classList.add('show');
+            }
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function (e) {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const dropdownButton = document.getElementById('dropdownButton');
+            
+            if (!dropdownButton.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
   // Show login 
   document.getElementById('login-btn').addEventListener('click', function() {
     document.querySelector('.show-login').style.display = 'grid';
