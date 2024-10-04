@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
             $insertResult = mysqli_query($conn, $insertQuery);
             if ($insertResult) {
                 echo "<script>alert('Product added successfully!');</script>";
-                echo "<script>window.location.href = 'index.php?page=product';</script>";
+                echo "<script>window.location.href = 'index.php?page=product_list';</script>";
             } else {
                 echo "<script>alert('Failed to add product. Please try again.');</script>";
             }
@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
 
                         while ($catRow = mysqli_fetch_array($categoryResult)) {
                             $selected = (isset($category_id) && $category_id == $catRow['id']) ? 'selected' : '';
-                            echo "<option value='{$catRow['id']}' $selected>{$catRow['category']}</option>";
+                            //echo "<option value='{$catRow['id']}' $selected>{$catRow['category']}</option>";
                         }
                         ?>
                     </select>
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 
                         while ($subCatRow = mysqli_fetch_array($subCategoryResult)) {
                             $selected = (isset($sub_category_id) && $sub_category_id == $subCatRow['id']) ? 'selected' : '';
-                            echo "<option value='{$subCatRow['id']}' $selected>{$subCatRow['sub_category']}</option>";
+                            //echo "<option value='{$subCatRow['id']}' $selected>{$subCatRow['sub_category']}</option>";
                         }
                         ?>
                     </select>

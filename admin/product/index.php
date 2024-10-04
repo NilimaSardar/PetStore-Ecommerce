@@ -62,7 +62,7 @@ if (!$result) {
                                     <div class="dropdown-menu" id="dropdownMenu" role="menu">
                                         <a class="dropdown-item" href="index.php?page=manage_product_list&id=<?php echo $row['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                         <hr>
-                                        <a class="dropdown-item delete_data" href="delete_product.php?id=<?php echo $row['id']; ?>"><i class="fa-solid fa-trash"></i> Delete</a>
+                                        <a class="dropdown-item delete_data" href="delete_product.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this product?');"><i class="fa-solid fa-trash"></i> Delete</a>
                                     </div>
                                 </td>
                             </tr>
