@@ -14,6 +14,7 @@ class DBConnection{
     public function __construct(){
 
         if (!isset($this->conn)) {
+            // $conn = mysqli_connect($servername,$username,$password,$database);
             
             $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
             

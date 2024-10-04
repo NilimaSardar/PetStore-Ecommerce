@@ -34,19 +34,23 @@
             </div>
 
             <div class="user-cart">
-                <button class="btn" id="login-btn" type="button">Login</button>
-
-                <div class="cart">
-                  <a href="./?p=cart">
-                      Cart
-                    <span class="cart-count" id="cart-count">
-                      2
-                    </span>
-                  </a>
-                        
-                  <a href="./?p=my_account" class="text-dark"><b> Hi, nilima!</b></a>
-                  <a href="logout.php" class="text-dark"><i class="fa fa-sign-out-alt"></i></a>
+            <?php if(isset($_SESSION['firstname'])): ?> 
+                <!-- User is logged in -->
+                <div class="cart" style="display:flex;">
+                    <a href="./?p=cart">
+                        Cart
+                        <span class="cart-count" id="cart-count">
+                            2
+                        </span>
+                    </a>
+                    
+                    <a href="./?p=my_account" class="text-dark"><b>Hi, <?php echo $_SESSION['firstname']; ?>!</b></a>
+                    <a href="logout.php" class="text-dark"><i class="fa fa-sign-out-alt"></i></a>
                 </div>
+            <?php else: ?>
+                <!-- User is not logged in -->
+                <button class="btn" id="login-btn" type="button"><a href="login.php">Login</a></button>
+            <?php endif; ?>
             </div>   
         </div>
     </nav>

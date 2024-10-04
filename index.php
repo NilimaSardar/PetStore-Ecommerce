@@ -1,3 +1,8 @@
+<?php
+session_start();
+$page_title = "Login";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +11,8 @@
     <title>Pet Store</title>
     <!-- font awesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+
+    <script src="JQuery.js"></script>
 
     <!-- <link rel="stylesheet" href="css/style.css"/> -->
 
@@ -470,174 +477,174 @@
 
 
         /* my account section */
-    .show-account{
-        width: 100%;
-        display: grid;
-        place-items: center;
-        padding: 18px 0px;
+      .show-account{
+          width: 100%;
+          display: grid;
+          place-items: center;
+          padding: 18px 0px;
 
-        .container{
-            /* background-color: aquamarine; */
-            width: 80%;
-            height: auto;
+          .container{
+              /* background-color: aquamarine; */
+              width: 80%;
+              height: auto;
 
-            .card-body{
-                border: 2px solid #2125298a;
-                border-radius: 4px;
-                /* border-color: #212529d5; */
-                padding: 12px;
+              .card-body{
+                  border: 2px solid #2125298a;
+                  border-radius: 4px;
+                  /* border-color: #212529d5; */
+                  padding: 12px;
 
-                .content{
-                    display: flex;
-                    justify-content: space-between;
-                    font-size: 22px;
-                    padding: 15px 0px;
-                    
-                    .btn{
-                        background-color: #212529;
-                        color: #FFFFFF;
-                        text-decoration: none;
-                        padding: 10px;
-                        font-size: 18px;
-                    }
-                }
+                  .content{
+                      display: flex;
+                      justify-content: space-between;
+                      font-size: 22px;
+                      padding: 15px 0px;
+                      
+                      .btn{
+                          background-color: #212529;
+                          color: #FFFFFF;
+                          text-decoration: none;
+                          padding: 10px;
+                          font-size: 18px;
+                      }
+                  }
 
-                hr{
-                    color: #212529;
-                }
+                  hr{
+                      color: #212529;
+                  }
 
-                .table{
-                    width: 100%;
-                    
-                    thead {
-                        position: relative;
-                    }
+                  .table{
+                      width: 100%;
+                      
+                      thead {
+                          position: relative;
+                      }
 
-                    thead::after {
-                        content: "";
-                        position: absolute;
-                        bottom: -1px;
-                        left: 0;
-                        width: 100%;
-                        height: 1px;
-                        background-color: #212529;
-                    }
+                      thead::after {
+                          content: "";
+                          position: absolute;
+                          bottom: -1px;
+                          left: 0;
+                          width: 100%;
+                          height: 1px;
+                          background-color: #212529;
+                      }
 
-                    tbody tr{
-                        position: relative;
-                    }
+                      tbody tr{
+                          position: relative;
+                      }
 
-                    tbody tr::after {
-                        content: "";
-                        position: absolute;
-                        bottom: -1px;
-                        left: 0;
-                        width: 100%;
-                        height: 1px;
-                        background-color: #2125298a;
-                    }
+                      tbody tr::after {
+                          content: "";
+                          position: absolute;
+                          bottom: -1px;
+                          left: 0;
+                          width: 100%;
+                          height: 1px;
+                          background-color: #2125298a;
+                      }
 
-                    th,td{
-                        padding: 7px;
-                        text-align: start;
-                    }
-                }
-            }
-        }
-    }
+                      th,td{
+                          padding: 7px;
+                          text-align: start;
+                      }
+                  }
+              }
+          }
+      }
 
 
 
-    /* view_product page */
-    .product-display{
-        height: auto;
-        padding: 48px 0px;
+      /* view_product page */
+      .product-display{
+          height: auto;
+          padding: 48px 0px;
 
-        .container{
-          color: #212529;
-          font-size: 16px;
-          margin: 48px 64.4px 0px;
-          padding: 0px 48px;
+          .container{
+            color: #212529;
+            font-size: 16px;
+            margin: 48px 64.4px 0px;
+            padding: 0px 48px;
 
-            .row{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
+              .row{
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-evenly;
 
-                .col-1{
-                    width: 50%;
-                    height: 500px;
-                    padding: 0px 30px;
+                  .col-1{
+                      width: 50%;
+                      height: 500px;
+                      padding: 0px 30px;
 
-                    .card-img{
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
+                      .card-img{
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                      }
+                  
+                  
+                  }
+                  .col-2{
+                      width: 50%;
+                      height: 500px;
+                      padding: 0px 30px;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      
+                      .product-name{
+                          font-size: 54px;
+                          font-weight: bolder;
+                      }
+
+                      .product-available{
+                          padding: 20px 0;
+                          font-size: 25px;
+                      }
+
+                      .product-size{
+                          padding: 20px 0;
+
+                          span{
+                              padding: 5px 0;
+                              font-size: 20px;
+                              font-weight: 500;
+                              letter-spacing: 1px;
+                          }
+                      }
+
+                      form{
+                          .product-quantity{
+                              .quantity{
+                                  text-align: center;
+                                  height: 40px;
+                                  max-width: 35px;
+                                  margin: 5px 10px 10px 0px;
+                                  border-radius: 10px;
+                              }
+                              .btn{
+                                  text-align: center;
+                                  height: 40px;
+                                  margin: 5px 10px 10px 0px;
+                                  padding: 0px 10px;
+                                  border-radius: 8px;
+                                  font-size: 18px;
+                              }
+                          }
+                      }
+
+                      .product-description{
+                          letter-spacing: 0.1px;
+                          font-size: 16px;
+                          text-align: justify;
+                      }
+                  
+                  }
+
                 
-                
-                }
-                .col-2{
-                    width: 50%;
-                    height: 500px;
-                    padding: 0px 30px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    
-                    .product-name{
-                        font-size: 54px;
-                        font-weight: bolder;
-                    }
-
-                    .product-available{
-                        padding: 20px 0;
-                        font-size: 25px;
-                    }
-
-                    .product-size{
-                        padding: 20px 0;
-
-                        span{
-                            padding: 5px 0;
-                            font-size: 20px;
-                            font-weight: 500;
-                            letter-spacing: 1px;
-                        }
-                    }
-
-                    form{
-                        .product-quantity{
-                            .quantity{
-                                text-align: center;
-                                height: 40px;
-                                max-width: 35px;
-                                margin: 5px 10px 10px 0px;
-                                border-radius: 10px;
-                            }
-                            .btn{
-                                text-align: center;
-                                height: 40px;
-                                margin: 5px 10px 10px 0px;
-                                padding: 0px 10px;
-                                border-radius: 8px;
-                                font-size: 18px;
-                            }
-                        }
-                    }
-
-                    .product-description{
-                        letter-spacing: 0.1px;
-                        font-size: 16px;
-                        text-align: justify;
-                    }
-                
-                }
-
-              
-            }
-        }
-    }
+              }
+          }
+      }
 
 
             /* Edit-account css */
@@ -852,191 +859,140 @@
 
 
             /* cart css */
-    .show-cart{
-        width: 100%;
-        height: auto;
-        /* background-color: bisque; */
-        padding: 48px 0px;
-        
-        .container{
-            margin: 0px 37px;
-            padding: 0px 70px;
+      .show-cart{
+          width: 100%;
+          height: auto;
+          /* background-color: bisque; */
+          padding: 48px 0px;
+          
+          .container{
+              margin: 0px 37px;
+              padding: 0px 70px;
 
-            .row{
-                text-align: right;
-                .btn{
-                    font-size: 14px;
-                    padding: 10px;
-                    color: #212529;
-                    border-color: #212529d5;
-                    background-color: #FFFFFF;
-                }
-            }
+              .row{
+                  text-align: right;
+                  .btn{
+                      font-size: 14px;
+                      padding: 10px;
+                      color: #212529;
+                      border-color: #212529d5;
+                      background-color: #FFFFFF;
+                  }
+              }
 
-            .card-body{
-                border: 2px solid rgba(0, 0, 0, 0.125);
-                padding: 16px;
-                margin: 10px 0px;
+              .card-body{
+                  border: 2px solid rgba(0, 0, 0, 0.125);
+                  padding: 16px;
+                  margin: 10px 0px;
 
-                h3{
-                    font-size: 28px;
-                    margin: 0px 0px 8px;
-                }
+                  h3{
+                      font-size: 28px;
+                      margin: 0px 0px 8px;
+                  }
 
-                .cart-item{
-                    width: 100%;
-                    height: 150px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    /* background-color: aquamarine; */
-                    border-bottom: 2px solid rgba(0, 0, 0, 0.125);
-                    margin: 0px 0px 8px;
-                    padding: 8px;
+                  .cart-item{
+                      width: 100%;
+                      height: 150px;
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      /* background-color: aquamarine; */
+                      border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+                      margin: 0px 0px 8px;
+                      padding: 8px;
 
-                    .align-items-center{
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        height: 100%;
-                        width: 50%;
+                      .align-items-center{
+                          display: flex;
+                          align-items: center;
+                          gap: 12px;
+                          height: 100%;
+                          width: 50%;
 
-                        .btn{
-                            color: red;
-                            border: 1px solid red;
-                            padding: 8px;
-                            border-radius: 5px;
-                        }
+                          .btn{
+                              color: red;
+                              border: 1px solid red;
+                              padding: 8px;
+                              border-radius: 5px;
+                          }
 
-                        .image{
-                            height: 100%;
-                            width: 40%;
-                            .cart-prod-img{
-                                width: 100%;
-                                height: 100%;
-                                object-fit: contain;
-                                border: 1px solid rgba(0, 0, 0, 0.125);
-                                
-                            }
-                        }
-                        
-                        .product-detail{
-                            height: 100%;
+                          .image{
+                              height: 100%;
+                              width: 40%;
+                              .cart-prod-img{
+                                  width: 100%;
+                                  height: 100%;
+                                  object-fit: contain;
+                                  border: 1px solid rgba(0, 0, 0, 0.125);
+                                  
+                              }
+                          }
+                          
+                          .product-detail{
+                              height: 100%;
 
-                            .description{
-                                font-size: 20px;
-                                padding: 2px;
-                            }
-                        }
+                              .description{
+                                  font-size: 20px;
+                                  padding: 2px;
+                              }
+                          }
 
-                        .input-group{
-                            width: 100px;
-                            display: flex;
-                            padding-top: 10px ;
+                          .input-group{
+                              width: 100px;
+                              display: flex;
+                              padding-top: 10px ;
 
-                            input{
-                                text-align: center;
-                                width: 100%;
-                            }
-                            .btn-inc{
-                                color: #212529;
-                                border: 1px solid #212529;
-                                padding: 8px;
-                                border-radius: 4px;
-                            }
+                              input{
+                                  text-align: center;
+                                  width: 100%;
+                              }
+                              .btn-inc{
+                                  color: #212529;
+                                  border: 1px solid #212529;
+                                  padding: 8px;
+                                  border-radius: 4px;
+                              }
 
-                        }
-                    }
+                          }
+                      }
 
-                    .total-amount{
-                        font-size: 24px;
-                    }
-                }
+                      .total-amount{
+                          font-size: 24px;
+                      }
+                  }
 
-                .border-bottom{
-                    display: flex;
-                    justify-content: end;
-                    align-items: center;
-                    color: #212529;
-                    font-size: 28px;
-                    height: 70px;
-                    gap: 400px;
-                }
-            }
+                  .border-bottom{
+                      display: flex;
+                      justify-content: end;
+                      align-items: center;
+                      color: #212529;
+                      font-size: 28px;
+                      height: 70px;
+                      gap: 400px;
+                  }
+              }
 
-            .checkout{
-                width: 100%;
-                height: 70px;
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
+              .checkout{
+                  width: 100%;
+                  height: 70px;
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
 
-                .btn{
-                    text-decoration: none;
-                    background-color: #212529;
-                    color: #FFFFFF;
-                    padding: 10px;
-                    letter-spacing: 1px;
-                }
-            }
-        }
-    }
+                  .btn{
+                      text-decoration: none;
+                      background-color: #212529;
+                      color: #FFFFFF;
+                      padding: 10px;
+                      letter-spacing: 1px;
+                  }
+              }
+          }
+      }
     </style>
 </head>
 <body>
   <div class="wrapper">
-    <nav class="navbar">
-        <div class="container">
-            <button class="navbar-toggler" type="button">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <div class="intro">
-              <a class="navbar-brand" href="./">
-                <img src="uploads/logo (2).jpg" width="30" height="30">
-                Pet Store
-              </a>
-
-                <form id="search-form">
-                  <div class="input-group">
-                    <input class="form-search" type="search" placeholder="Search" aria-label="Search" name="search">
-                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                  </div>
-                </form>
-            </div>
-
-            <div class="menu">
-              <ul class="nav-menu">
-                <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
-                <li class="nav-item item dropdown-icon" id="dropdownButton"><a class="nav-link" href="#">Pets <i class="fa-solid fa-caret-down"></i></a>
-                        
-                  <ul class="dropdown-menu" id="dropdownMenu">
-                    <li><a class="dropdown-item" href="#">Cat</a></li>
-                    <li><a class="dropdown-item" href="#">Dog</a></li>
-                  </ul>
-                </li>
-      
-                <li class="nav-item"><a class="nav-link" href="index.php?page=about">About</a></li>
-              </ul>
-            </div>
-
-            <div class="user-cart">
-                <button class="btn" id="login-btn" type="button">Login</button>
-
-                <div class="cart">
-                  <a href="index.php?page=cart_list">
-                      Cart
-                    <span class="cart-count" id="cart-count">
-                      2
-                    </span>
-                  </a>
-                        
-                  <a href="index.php?page=my_account" class="text-dark"><b> Hi, nilima!</b></a>
-                  <a href="logout.php" class="text-dark"><i class="fa fa-sign-out-alt"></i></a>
-                </div>
-            </div>   
-        </div>
-    </nav>
+<?php require_once('inc/topBarNav.php') ?>
     <?php
             // Mapping pages to their respective folders
             $pages = [
@@ -1063,22 +1019,9 @@
                 include('home.php');
             }
             ?>
-   
-  <section class="show-login">
-  <?php include('login.html'); ?>
-  </section>
-  <section class="show-reg">
-  <?php include('registration.php'); ?>
-  </section>
 
-    <footer class="main-footer">
-      <p>
-        <strong>
-          Copyright ©. 
-        </strong>
-      All rights reserved.
-    </p>
-    </footer>
+  <?php require_once('inc/footer.php') ?>
+
 
   </div>
   <script>
@@ -1105,34 +1048,6 @@
                 dropdownMenu.classList.remove('show');
             }
         });
-
-  // Show login 
-  document.getElementById('login-btn').addEventListener('click', function() {
-    document.querySelector('.show-login').style.display = 'grid';
-  });
-
-  // Close login 
-  document.querySelector('.close-login').addEventListener('click', function() {
-    document.querySelector('.show-login').style.display = 'none';
-  });
-
-  // Show register
-  document.getElementById('create_account').addEventListener('click', function() {
-    document.querySelector('.show-login').style.display = 'none'; 
-    document.querySelector('.show-reg').style.display = 'grid';
-  });
-
-  // Close register
-  document.querySelector('.close-reg').addEventListener('click', function() {
-    document.querySelector('.show-reg').style.display = 'none';
-  });
-
-  // Show login again
-  document.getElementById('login-show').addEventListener('click', function() {
-    document.querySelector('.show-reg').style.display = 'none';
-    document.querySelector('.show-login').style.display = 'grid';
-  });
-
 </script>
 
 </body>

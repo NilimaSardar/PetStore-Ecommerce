@@ -150,6 +150,10 @@
             border-radius: 5px;
             border: 1px solid #000000E6;
             display: flex;
+
+            a{
+                text-decoration: none;
+            }
           }
 
           .cart{
@@ -280,7 +284,7 @@
       .show-login{
           height: 100vh;
           width: 100%;
-          display: none;
+          display: grid;
           position: fixed;
           top: 0;
           left: 0;
@@ -318,7 +322,7 @@
                   }
                   .form-content{
                       .text-center{
-                          margin: 0;
+                          margin: 10px;
                           text-align: center;
                           font-size: 30px;
                           letter-spacing: 1px;
@@ -365,7 +369,7 @@
       .show-reg{
           height: 100vh;
           width: 100%;
-          display: none;
+          display: grid;
           position: fixed;
           top: 0;
           left: 0;

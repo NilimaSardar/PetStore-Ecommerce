@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+$page_title="Time Spent";
+
+if(!isset($_SESSION['username'])){
+    ?>
+        <script>
+            //alert('You are logged out');
+            window.location = 'login.php';
+        </script>
+    <?php
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -771,7 +786,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn dropdown-icon" id="dropdownButton-admin">
                         <span><i class="fa-solid fa-right-from-bracket"></i> </span>
-                        <span>Logout</span>
+                        <a href="logout.php"><span>Logout</span></a>
                         <!-- <span><i class="fa-solid fa-caret-down"></i></span> -->
                     </button>
                     <!-- <div class="dropdown-menu" id="dropdownMenu-admin">
