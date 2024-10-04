@@ -909,24 +909,6 @@ if(!isset($_SESSION['username'])){
    
 
     <script>
-        const dropdownButtonAdmin = document.getElementById('dropdownButton-admin');
-        const dropdownMenuAdmin = document.getElementById('dropdownMenu-admin');
-
-        dropdownButtonAdmin.addEventListener('click', function() {
-            if (dropdownMenuAdmin.style.display === 'block') {
-                dropdownMenuAdmin.style.display = 'none';
-            } else {
-                dropdownMenuAdmin.style.display = 'block';
-            }
-        });
-
-        // Close the dropdown if clicked outside
-        window.onclick = function(event) {
-            if (!event.target.matches('#dropdownButton-admin')) {
-                dropdownMenuAdmin.style.display = 'none';
-            }
-        };
-
 
         const dropdownButton = document.getElementById('dropdownButton');
         const dropdownMenu = document.getElementById('dropdownMenu');
@@ -971,50 +953,50 @@ if(!isset($_SESSION['username'])){
             fileNameLabel.textContent = "Choose file";
             fileNameDisplay.textContent = "No file chosen";
         }
-    }
-
-    function updateFileName2() {
-        const fileInput = document.getElementById('customFile-cover');
-        const fileNameLabel = document.querySelector('.custom-file-label-cover');
-        const fileNameDisplay = document.getElementById('file-name-cover');
-        const imgTag = document.getElementById('cimg2-cover');
-
-        // Get the selected file name
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const fileName = file.name;
-            fileNameLabel.textContent = fileName;
-            fileNameDisplay.textContent = "chosen file";
-
-            // Create a FileReader to load the image
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                // Update the image src with the selected file
-                imgTag.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        } else {
-            fileNameLabel.textContent = "Choose file";
-            fileNameDisplay.textContent = "No file chosen";
         }
-    }
 
-    function showDialog() {
-        const popupDialog = document.getElementById('popup-dialog');
-        const cancelButton = document.getElementById('cancel-btn');
-    
-        popupDialog.style.display = 'flex';
+        function updateFileName2() {
+            const fileInput = document.getElementById('customFile-cover');
+            const fileNameLabel = document.querySelector('.custom-file-label-cover');
+            const fileNameDisplay = document.getElementById('file-name-cover');
+            const imgTag = document.getElementById('cimg2-cover');
 
-        cancelButton.addEventListener('click', function() {
-            popupDialog.style.display = 'none'; 
-        });
+            // Get the selected file name
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const fileName = file.name;
+                fileNameLabel.textContent = fileName;
+                fileNameDisplay.textContent = "chosen file";
 
-        window.addEventListener('click', function(event) {
-            if (event.target === popupDialog) {
-                popupDialog.style.display = 'none';
+                // Create a FileReader to load the image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update the image src with the selected file
+                    imgTag.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                fileNameLabel.textContent = "Choose file";
+                fileNameDisplay.textContent = "No file chosen";
             }
-        });
-    }
+        }
+
+        function showDialog() {
+            const popupDialog = document.getElementById('popup-dialog');
+            const cancelButton = document.getElementById('cancel-btn');
+        
+            popupDialog.style.display = 'flex';
+
+            cancelButton.addEventListener('click', function() {
+                popupDialog.style.display = 'none'; 
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === popupDialog) {
+                    popupDialog.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 </html>

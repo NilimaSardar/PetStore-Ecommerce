@@ -16,18 +16,18 @@
                     <colgroup>
                         <col width="5%">
                         <col width="15%">
+                        <col width="15%">
                         <col width="20%">
-                        <col width="35%">
-                        <col width="10%">
+                        <col width="30%">
                         <col width="15%">
                     </colgroup>
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Date Created</th>
+                            <th>Category</th>
+                            <th>Sub Category</th>
                             <th>Product</th>
                             <th>Description</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
