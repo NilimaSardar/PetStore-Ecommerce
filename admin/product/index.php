@@ -1,3 +1,16 @@
+<?php
+// Fetch data from product, category, and sub_category tables using JOIN
+$query = "SELECT p.id, p.product_name, p.description, c.category, sc.sub_category 
+          FROM product p
+          JOIN category c ON p.category_id = c.id
+          JOIN sub_category sc ON p.sub_category_id = sc.id";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
+?>
+
 <div class="card">
     <div class="inner-card">
         <div class="card-header">
@@ -32,30 +45,30 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $i = 1; // To keep track of row numbers
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
                             <tr>
-                                <td class="text-center">1</td>
-                                <td>2024:05:12 12:09</td>
-                                <td>Dog Food</td>
-                                <td ><p class="truncate-1 m-0">healthy food</p></td>
-                                <td class="text-center">
-                                
-                                        <!-- <span class="badge badge-success">Active</span> -->
-                                
-                                        <span class="badge badge-danger">Inactive</span>
-                                
-                                </td>
+                                <td class="text-center"><?php echo $i++; ?></td>
+                                <td><?php echo $row['category']; ?></td>
+                                <td><?php echo $row['sub_category']; ?></td>
+                                <td><?php echo $row['product_name']; ?></td>
+                                <td><p class="truncate-1 m-0"><?php echo $row['description']; ?></p></td>
                                 <td>
-                                    <button type="button" class="btn  dropdown-icon" id="dropdownButton" data-toggle="dropdown">
-                                            Action
-                                            <i class="fa-solid fa-caret-down"></i>
+                                    <button type="button" class="btn dropdown-icon dropdown-toggle" id="dropdownButton" data-toggle="dropdown">
+                                        Action <i class="fa-solid fa-caret-down"></i>
                                     </button>
                                     <div class="dropdown-menu" id="dropdownMenu" role="menu">
-                                        <a class="dropdown-item" href="index.php?page=manage_product_list"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        <a class="dropdown-item" href="index.php?page=manage_product_list&id=<?php echo $row['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                         <hr>
-                                        <a class="dropdown-item delete_data" href="#" data-id=""><i class="fa-solid fa-trash"></i> Delete</a>
+                                        <a class="dropdown-item delete_data" href="delete_product.php?id=<?php echo $row['id']; ?>"><i class="fa-solid fa-trash"></i> Delete</a>
                                     </div>
                                 </td>
                             </tr>
+                            <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

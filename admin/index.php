@@ -910,23 +910,37 @@ if(!isset($_SESSION['username'])){
 
     <script>
 
-        const dropdownButton = document.getElementById('dropdownButton');
-        const dropdownMenu = document.getElementById('dropdownMenu');
+        // Select all dropdown buttons and menus
+        const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
-        dropdownButton.addEventListener('click', function() {
-            if (dropdownMenu.style.display === 'block') {
-                dropdownMenu.style.display = 'none';
-            } else {
-                dropdownMenu.style.display = 'block';
-            }
+        // Add event listeners to each dropdown button
+        dropdownButtons.forEach((dropdownButton, index) => {
+            const dropdownMenu = dropdownMenus[index]; // Get the corresponding dropdown menu
+            
+            // Toggle the visibility of the dropdown menu on button click
+            dropdownButton.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent click event from propagating to window
+
+                // Toggle the dropdown menu visibility
+                if (dropdownMenu.style.display === 'block') {
+                    dropdownMenu.style.display = 'none';
+                } else {
+                    // Hide any other open dropdowns
+                    dropdownMenus.forEach(menu => menu.style.display = 'none');
+                    dropdownMenu.style.display = 'block';
+                }
+            });
         });
 
-        // Close the dropdown if clicked outside
-        window.onclick = function(event) {
-            if (!event.target.matches('#dropdownButton')) {
-                dropdownMenu.style.display = 'none';
-            }
-        };
+        // Close the dropdowns if clicked outside
+        window.addEventListener('click', function(event) {
+            dropdownMenus.forEach(menu => {
+                if (menu.style.display === 'block') {
+                    menu.style.display = 'none';
+                }
+            });
+        });
 
 
         function updateFileName() {

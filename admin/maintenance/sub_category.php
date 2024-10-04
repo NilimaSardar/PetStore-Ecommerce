@@ -56,7 +56,7 @@ if (!$result) {
                                 <td><?php echo $row['category']; ?></td>
                                 <td><?php echo $row['sub_category']; ?></td>
                                 <td>
-                                    <button type="button" class="btn dropdown-icon" id="dropdownButton" data-toggle="dropdown">
+                                    <button type="button" class="btn dropdown-icon dropdown-toggle" id="dropdownButton" data-toggle="dropdown">
                                         Action <i class="fa-solid fa-caret-down"></i>
                                     </button>
                                     <div class="dropdown-menu" id="dropdownMenu" role="menu">

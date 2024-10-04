@@ -43,7 +43,7 @@
                                 <td class="text-right">300,000</td>
                                 <td class="text-right">15</td>
                                 <td>
-                                    <button type="button" class="btn  dropdown-icon" id="dropdownButton" data-toggle="dropdown">
+                                    <button type="button" class="btn  dropdown-icon dropdown-toggle" id="dropdownButton" data-toggle="dropdown">
                                             Action
                                             <i class="fa-solid fa-caret-down"></i>
                                     </button>
