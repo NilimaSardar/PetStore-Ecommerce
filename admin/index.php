@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+include '../connection.php';
+
 $page_title="Time Spent";
 
 if(!isset($_SESSION['username'])){
@@ -843,12 +845,12 @@ if(!isset($_SESSION['username'])){
                             </a>
                         </li>
                         <li>Maintenance</li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="index.php?page=category" class="nav-link">
                                 <i class="fa-solid fa-table-list"></i>
                                     Category List
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="index.php?page=sub_category" class="nav-link">
                                 <i class="fa-solid fa-table-list"></i>
