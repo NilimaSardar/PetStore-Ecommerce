@@ -1,4 +1,15 @@
+<?php
+     // Fetch inventory data (adjust query as necessary)
+    $query = "SELECT i.id, p.product_name, i.unit, s.size, i.price, i.quantity 
+        FROM inventory i 
+        JOIN product p ON i.product_id = p.id
+        LEFT JOIN sizes s ON i.id = s.id"; // Adjust based on table relations
+    $result = mysqli_query($conn, $query);
 
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+?>
 <div class="card">
     <div class="inner-card">
         <div class="card-header">
@@ -35,25 +46,31 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $i = 1; // For row numbering
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
                             <tr>
-                                <td class="text-center">1</td>
-                                <td>parrot</td>
-                                <td>pcs</td>
-                                <td>NONE</td>
-                                <td class="text-right">300,000</td>
-                                <td class="text-right">15</td>
+                                <td class="text-center"><?php echo $i++; ?></td>
+                                <td><?php echo $row['product_name']; ?></td>
+                                <td><?php echo $row['unit']; ?></td>
+                                <td><?php echo !empty($row['size']) ? $row['size'] : 'NONE'; ?></td>
+                                <td class="text-right"><?php echo number_format($row['price'], 2); ?></td>
+                                <td class="text-right"><?php echo $row['quantity']; ?></td>
                                 <td>
-                                    <button type="button" class="btn  dropdown-icon dropdown-toggle" id="dropdownButton" data-toggle="dropdown">
-                                            Action
-                                            <i class="fa-solid fa-caret-down"></i>
+                                    <button type="button" class="btn dropdown-icon dropdown-toggle" id="dropdownButton" data-toggle="dropdown">
+                                        Action <i class="fa-solid fa-caret-down"></i>
                                     </button>
                                     <div class="dropdown-menu" id="dropdownMenu" role="menu">
-                                        <a class="dropdown-item" href="index.php?page=manage_inventory_list"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        <a class="dropdown-item" href="index.php?page=manage_inventory_list&id=<?php echo $row['id']; ?>"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                         <hr>
-                                        <a class="dropdown-item delete_data" href="#" data-id=""><i class="fa-solid fa-trash"></i> Delete</a>
+                                        <a class="dropdown-item delete_data" href="delete_inventory.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this inventory item?');"><i class="fa-solid fa-trash"></i> Delete</a>
                                     </div>
                                 </td>
                             </tr>
+                            <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
