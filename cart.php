@@ -72,7 +72,7 @@
                 </div>
          
             <div class="checkout">
-                <a href="./?p=checkout" class="btn">Checkout</a>
+                <a href="index.php?page=checkout" class="btn">Checkout</a>
             </div>
         </div>
     </section>

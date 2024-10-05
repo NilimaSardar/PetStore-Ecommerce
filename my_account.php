@@ -4,7 +4,7 @@
                 <div class="card-body">
                     <div class="content">
                         <h4><b>Orders</b></h4>
-                        <a href="./edit_account.html" class="btn"><i class="fa fa-user-cog"></i> Manage Account</a>
+                        <a href="index.php?page=edit_account" class="btn"><i class="fa fa-user-cog"></i> Manage Account</a>
                     </div>
                         <hr class="border-warning">
                         <table class="table">

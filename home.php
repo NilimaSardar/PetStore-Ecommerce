@@ -51,7 +51,7 @@ function validate_image($img_path) {
                 <div class="col-md-3">
                     <div class="product-item card">
                         <!-- Product image-->
-                        <img class="card-img-top" src="<?php echo validate_image($img); ?>" alt="Product Image" />
+                        <img class="card-img" src="<?php echo validate_image($img); ?>" alt="Product Image" />
                         <!-- Product details-->
                         <div class="card-body">
                             <div class="text-center">

@@ -5,16 +5,13 @@ if(isset($_GET['id'])) {
     $id = $_GET['id'];
     
     // Fetch the existing product details to edit
-    $editQuery = "SELECT * FROM inventory WHERE product_id = '$id'";
+    $editQuery = "SELECT * FROM sub_category WHERE id = '$id'";
     $editResult = mysqli_query($conn, $editQuery);
 
     if($editResult) {
         $row = mysqli_fetch_assoc($editResult);
-        $product_id = $row['product_id'];
-        $size = $row['size'];
-        $unit = $row['unit'];
-        $quantity = $row['quantity'];
-        $price = $row['price'];
+        $category_id = $row['category_id'];
+        $sub_category = $row['sub_category'];
 
 
         // Check if the image exists for the product
@@ -33,61 +30,31 @@ if(isset($_GET['id'])) {
         if (empty($imageFile)) {
             $imageFile = 'path/to/default/blank-image.jpg'; // Specify path to your blank image
         }
+    }else{
+
     }
 }
 ?>
 
-<section class="product-display">
-        <div class="container">
-            <div class="row">
-                <div class="col-1">
-                    <img class="card-img" id="display-img" <img src="<?php echo isset($imageFile) ? $imageFile : 'path/to/default/blank-image.jpg'; ?>" alt="..." />
-                </div>
-                <div class="col-2">
-                    <h1 class="product-name">
-                    <?php
-                        $categoryQuery = "SELECT * FROM product WHERE id='$product_id'";
+<!-- Header-->
+<header class="banner" id="main-header">
+    <div class="text-center">
+        <h1 class="head-message">
+                        <?php
+                        $categoryQuery = "SELECT * FROM category WHERE id='$category_id'";
                         $categoryResult = mysqli_query($conn, $categoryQuery);
 
                         while ($catRow = mysqli_fetch_array($categoryResult)) {
-                            $selected = (isset($product_id) && $product_id == $catRow['id']) ? 'selected' : '';
-                            echo "<option value='{$catRow['id']}' $selected>{$catRow['product_name']}</option>";
-                        }
-                        ?></h1>
-                    <div class="product-available">
-                        Rs. <span id="price"><?php echo isset($price) ? $price : ''; ?></span>
-                        <br>
-                        <span><small><b>Available stock:</b> <span id="avail"><?php echo isset($quantity) ? $quantity : ''; ?></span></small></span>
-                    </div>
-                    <div class="product-size">
-                        <span><b>Size: </b><?php echo isset($size) ? $size : ''; ?></span>
-                    </div>
-                    <form action="" id="add-cart">
-                        <div class="product-quantity">
-                            <input class="quantity" id="inputQuantity" type="number" value="1" name="quantity" />
-                            <button class="btn" type="submit">
-                                Add to cart
-                            </button>
-                        </div>
-                    </form>
-                    <p class="description">
-
-                    <?php
-                        $categoryQuery = "SELECT * FROM product WHERE id='$product_id'";
-                        $categoryResult = mysqli_query($conn, $categoryQuery);
-
-                        while ($catRow = mysqli_fetch_array($categoryResult)) {
-                            $selected = (isset($product_id) && $product_id == $catRow['id']) ? 'selected' : '';
-                            echo " $selected>{$catRow['description']}";
+                            echo $catRow['category'];
                         }
                         ?>
-                    </p>                    
-                </div>
-            </div>
-        </div>
-</section>
-    <!-- Related items section-->
-    <?php
+        </h1>
+        <p class="subhead-message"><?php echo $sub_category?></p>
+    </div>
+</header>
+<!-- Section-->
+
+<?php
 function validate_image($img_path) {
     // Check if the image exists, if not return a placeholder image
     if (!empty($img_path) && file_exists($img_path)) {
@@ -100,13 +67,11 @@ function validate_image($img_path) {
 
 <!-- Section -->
 <section class="product">
-    <h2 class="info">Related products</h2>
-
     <div class="container">
         <div class="row">
             <?php 
             // Query to get active products from the database
-            $products = $conn->query("SELECT * FROM product ORDER BY rand() LIMIT 8");
+            $products = $conn->query("SELECT * FROM `product` WHERE sub_category_id='$id' ORDER BY rand() LIMIT 8");
             while ($row = $products->fetch_assoc()):
                 // Get the path to the product's image folder
                 $upload_path = 'admin/uploads/product_'.$row['id'];
@@ -133,7 +98,7 @@ function validate_image($img_path) {
                 <div class="col-md-3">
                     <div class="product-item card">
                         <!-- Product image-->
-                        <img class="card-img-top" src="<?php echo validate_image($img); ?>" alt="Product Image" />
+                        <img class="card-img" src="<?php echo validate_image($img); ?>" alt="Product Image" />
                         <!-- Product details-->
                         <div class="card-body">
                             <div class="text-center">
@@ -159,4 +124,4 @@ function validate_image($img_path) {
             ?>
         </div>
     </div>
-</section> 
+</section>
