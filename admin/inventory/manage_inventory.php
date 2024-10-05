@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
 
                         while ($catRow = mysqli_fetch_array($categoryResult)) {
                             $selected = (isset($size) && $size == $catRow['id']) ? 'selected' : '';
-                            echo "<option value='{$catRow['id']}' $selected>{$catRow['size']}</option>";
+                            echo "<option value='{$catRow['size']}' $selected>{$catRow['size']}</option>";
                         }
                         ?>
                     </select>

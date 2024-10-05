@@ -13,8 +13,26 @@ if (isset($_GET['id'])) {
         $sub_category_id = $row['sub_category_id']; // Get sub-category ID
         $product_name = $row['product_name']; // Get product name
         $description = $row['description']; // Get description
+        
+        // Check if the image exists for the product
+        $imageDir = "uploads/product_$id/";
+        $imageFile = ''; // Will hold the image path if found
+        if (is_dir($imageDir)) {
+            $files = scandir($imageDir);
+            foreach ($files as $file) {
+                if ($file !== '.' && $file !== '..') {
+                    $imageFile = $imageDir . $file;
+                    break;
+                }
+            }
+        }
+        // If no image is found, set a default blank image
+        if (empty($imageFile)) {
+            $imageFile = 'path/to/default/blank-image.jpg'; // Specify path to your blank image
+        }
     }
 }
+
 
 // Handle form submission
 if (isset($_POST['submit'])) {
@@ -31,6 +49,25 @@ if (isset($_POST['submit'])) {
             $insertQuery = "INSERT INTO product (category_id, sub_category_id, product_name, description) VALUES ('$category_id', '$sub_category_id', '$product_name', '$description')";
             $insertResult = mysqli_query($conn, $insertQuery);
             if ($insertResult) {
+                $product_id = mysqli_insert_id($conn); // Get the new product ID
+
+                // Handle image upload
+                if (!empty($_FILES['img']['name'][0])) {
+                    $uploadDir = "uploads/product_$product_id/";
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0777, true); // Create folder for product
+                    }
+
+                    foreach ($_FILES['img']['tmp_name'] as $key => $tmp_name) {
+                        $fileName = $_FILES['img']['name'][$key];
+                        $fileTmp = $_FILES['img']['tmp_name'][$key];
+                        $filePath = $uploadDir . $fileName;
+
+                        // Move uploaded file to folder
+                        move_uploaded_file($fileTmp, $filePath);
+                    }
+                }
+
                 echo "<script>alert('Product added successfully!');</script>";
                 echo "<script>window.location.href = 'index.php?page=product_list';</script>";
             } else {
@@ -41,7 +78,25 @@ if (isset($_POST['submit'])) {
             $id = $_POST['id'];
             $updateQuery = "UPDATE product SET category_id = '$category_id', sub_category_id = '$sub_category_id', product_name = '$product_name', description = '$description' WHERE id = '$id'";
             $updateResult = mysqli_query($conn, $updateQuery);
+
             if ($updateResult) {
+                $uploadDir = "uploads/product_$id/";
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true); // Create folder if not exists
+                }
+
+                // Handle image upload
+                if (!empty($_FILES['img']['name'][0])) {
+                    foreach ($_FILES['img']['tmp_name'] as $key => $tmp_name) {
+                        $fileName = $_FILES['img']['name'][$key];
+                        $fileTmp = $_FILES['img']['tmp_name'][$key];
+                        $filePath = $uploadDir . $fileName;
+
+                        // Move uploaded file to folder
+                        move_uploaded_file($fileTmp, $filePath);
+                    }
+                }
+
                 echo "<script>alert('Product updated successfully!');</script>";
                 echo "<script>window.location.href = 'index.php?page=product_list';</script>";
             } else {
@@ -50,6 +105,7 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
 ?>
 
 
@@ -58,7 +114,7 @@ if (isset($_POST['submit'])) {
         <h3 class="card-title"><?php echo isset($id) ? "Update " : "Create New " ?> Product</h3>
     </div>
     <div class="card-body">
-        <form action="" id="product-form" method="POST">
+        <form action="" id="product-form" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo isset($id) ? $id : ''; ?>">
             <div class="col">
                 <div class="form-group">
@@ -118,9 +174,10 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class="img-item">
-                    <span><img src="../uploads/cat4.jpg" id="img" class="img-thumbnail" alt=""></span>
+                    <span><img src="<?php echo isset($imageFile) ? $imageFile : 'path/to/default/blank-image.jpg'; ?>" id="img" class="img-thumbnail" alt="Product Image"></span>
                     <span><button class="btn text-danger"  type="button"><i class="fa fa-trash"></i></button></span>
                 </div>
+
                 <div class="card-footer">
                     <button class="btn" type="submit" name="submit" form="product-form">Save</button>
                     <a class="btn" href="index.php?page=product_list">Cancel</a>

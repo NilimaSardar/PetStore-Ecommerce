@@ -1,6 +1,8 @@
 <?php
 session_start();
 $page_title = "Login";
+
+include('connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -1001,14 +1003,8 @@ $page_title = "Login";
                 'checkout' => 'checkout.html',
                 'my_account' => 'my_account.html',
                 'about' => 'about.html',
-                'manage_category' => 'maintenance/manage_category.php',
-                'manage_sub_category' => 'maintenance/manage_sub_category.php',
-                'order_list' => 'orders/index.php',
-                'view_order_list' => 'orders/view_order.php',
-                'update_status' => 'orders/index.php',
-                'product_list' => 'product/index.php',
-                'manage_product_list' => 'product/manage_product.php',
-                'settings' => 'system_info/index.php'
+                'view_product' => 'view_product.php',
+                
             ];
 
             // Check if the 'page' parameter is set and exists in the $pages array
