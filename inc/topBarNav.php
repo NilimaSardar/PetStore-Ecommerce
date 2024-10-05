@@ -56,7 +56,7 @@
                         ?>
                   </ul>
                 </li>
-                <li class="nav-item item dropdown-icon" id="dropdownButton"><a class="nav-link" href="#">Accessories <i class="fa-solid fa-caret-down"></i></a>
+                <li class="nav-item item dropdown-icon" id="dropdownButton"><a class="nav-link" href="">Accessories <i class="fa-solid fa-caret-down"></i></a>
                         
                         <ul class="dropdown-menu" id="dropdownMenu">
                           <?php
@@ -70,7 +70,7 @@
                               ?>
                         </ul>
                   </li>
-                  <li class="nav-item item dropdown-icon" id="dropdownButton"><a class="nav-link" href="#">Food <i class="fa-solid fa-caret-down"></i></a>
+                  <li class="nav-item item dropdown-icon" id="dropdownButton"><a class="nav-link" href="">Food <i class="fa-solid fa-caret-down"></i></a>
                         
                         <ul class="dropdown-menu" id="dropdownMenu">
                           <?php
@@ -85,7 +85,7 @@
                         </ul>
                   </li>
       
-                <li class="nav-item"><a class="nav-link" href="./?p=about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php?page=about">About</a></li>
               </ul>
             </div>
 
@@ -112,21 +112,21 @@
     </nav>
 
     <script>
-    // Select all dropdown buttons
-    const dropdownButtons = document.querySelectorAll('.dropdown-icon');
+    // // Select all dropdown buttons
+    // const dropdownButtons = document.querySelectorAll('.dropdown-icon');
 
-    dropdownButtons.forEach(function (dropdownButton) {
-        dropdownButton.addEventListener('click', function (event) {
-            const dropdownMenu = this.querySelector('.dropdown-menu');
-            const caretIcon = this.querySelector('i');  // Get the caret icon
+    // dropdownButtons.forEach(function (dropdownButton) {
+    //     dropdownButton.addEventListener('click', function (event) {
+    //         const dropdownMenu = this.querySelector('.dropdown-menu');
+    //         const caretIcon = this.querySelector('i');  // Get the caret icon
 
-            // Toggle the dropdown only if the user clicks on the caret icon
-            if (event.target === caretIcon) {
-                event.preventDefault();  // Only prevent default when clicking the caret
-                dropdownMenu.classList.toggle('show');
-            }
-        });
-    });
+    //         // Toggle the dropdown only if the user clicks on the caret icon
+    //         if (event.target === caretIcon) {
+    //             event.preventDefault();  // Only prevent default when clicking the caret
+    //             dropdownMenu.classList.toggle('show');
+    //         }
+    //     });
+    // });
 
     // Handle clicking on dropdown items
     const dropdownItems = document.querySelectorAll('.dropdown-item');

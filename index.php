@@ -30,7 +30,7 @@ include('connection.php');
                 'edit_account' => 'edit_account.php',
                 'checkout' => 'checkout.php',
                 'my_account' => 'my_account.php',
-                'about' => 'about.php',
+                'about' => 'about.html',
                 'product' => 'product.php',
                 'view_product' => 'view_product.php',
                 
