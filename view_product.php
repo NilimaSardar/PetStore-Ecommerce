@@ -62,10 +62,10 @@ if(isset($_GET['id'])) {
                     <div class="product-size">
                         <span><b>Size: </b><?php echo isset($size) ? $size : ''; ?></span>
                     </div>
-                    <form action="" id="add-cart">
+                    <form action="" method="POST" id="add-cart">
                         <div class="product-quantity">
-                            <input class="quantity" id="inputQuantity" type="number" value="1" name="quantity" />
-                            <button class="btn" type="submit">
+                            <input class="quantity" id="inputQuantity" type="number" value="1" name="quantity" disabled/>
+                            <button class="btn" type="submit" name="submit">
                                 Add to cart
                             </button>
                         </div>
@@ -78,7 +78,7 @@ if(isset($_GET['id'])) {
 
                         while ($catRow = mysqli_fetch_array($categoryResult)) {
                             $selected = (isset($product_id) && $product_id == $catRow['id']) ? 'selected' : '';
-                            echo " $selected>{$catRow['description']}";
+                            echo $catRow['description'];
                         }
                         ?>
                     </p>                    
@@ -100,9 +100,10 @@ function validate_image($img_path) {
 
 <!-- Section -->
 <section class="product">
-    <h2 class="info">Related products</h2>
 
     <div class="container">
+    <h2 class="info">Related products</h2>
+
         <div class="row">
             <?php 
             // Query to get active products from the database
@@ -133,7 +134,7 @@ function validate_image($img_path) {
                 <div class="col-md-3">
                     <div class="product-item card">
                         <!-- Product image-->
-                        <img class="card-img-top" src="<?php echo validate_image($img); ?>" alt="Product Image" />
+                        <img class="card-img" src="<?php echo validate_image($img); ?>" alt="Product Image" />
                         <!-- Product details-->
                         <div class="card-body">
                             <div class="text-center">
@@ -160,3 +161,37 @@ function validate_image($img_path) {
         </div>
     </div>
 </section> 
+
+
+
+<script>
+    document.getElementById('addToCartBtn').addEventListener('click', function() {
+        const productId = "<?php echo $product_id; ?>";
+        const productName = "<?php echo $row['product_name']; ?>";
+        const size = "<?php echo $size; ?>";
+        const price = "<?php echo $price; ?>";
+        const quantity = document.getElementById('inputQuantity').value;
+        const img = "<?php echo $imageFile; ?>";
+
+        const formData = new FormData();
+        formData.append('product_id', productId);
+        formData.append('product_name', productName);
+        formData.append('size', size);
+        formData.append('price', price);
+        formData.append('quantity', quantity);
+        formData.append('img', img);
+
+        fetch('cart.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert('Product added to cart!');
+            // You can update the cart display here if needed
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
